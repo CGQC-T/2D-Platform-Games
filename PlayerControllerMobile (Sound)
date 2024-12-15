@@ -1,0 +1,78 @@
+using UnityEngine;
+
+public class PlayerControllerMobile : MonoBehaviour
+{
+    public float speed = 5f;
+    public float jumpForce = 10f;
+
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    private bool moveLeft = false;
+    private bool moveRight = false;
+
+    private AudioSource audioSource; // ตัวควบคุมเสียง
+    public AudioClip jumpSound; // ไฟล์เสียงกระโดด
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        // การเคลื่อนที่ซ้าย-ขวา
+        if (moveLeft)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
+        else if (moveRight)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+    }
+
+    public void OnMoveLeftDown()
+    {
+        moveLeft = true;
+    }
+
+    public void OnMoveLeftUp()
+    {
+        moveLeft = false;
+    }
+
+    public void OnMoveRightDown()
+    {
+        moveRight = true;
+    }
+
+    public void OnMoveRightUp()
+    {
+        moveRight = false;
+    }
+
+    public void OnJump()
+    {
+        if (isGrounded)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
+
+            // เล่นเสียงกระโดด
+            audioSource.PlayOneShot(jumpSound);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+}
