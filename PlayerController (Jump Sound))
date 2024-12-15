@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
             // เล่นเสียงกระโดด
             audioSource.PlayOneShot(jumpSound);
+            //Audio Source//
         }
     }
 
