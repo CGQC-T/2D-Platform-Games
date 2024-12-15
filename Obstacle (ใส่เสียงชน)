@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class Obstacle : MonoBehaviour
+{
+    private GameManager gameManager;
+    public AudioClip hitSound; // ไฟล์เสียงชน Obstacle
+
+    void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameManager.AddScore(1); // เพิ่มคะแนน
+            AudioSource.PlayClipAtPoint(hitSound, transform.position); // เล่นเสียงชน
+        }
+    }
+}
