@@ -10,3 +10,19 @@
     เลือก GameObject Ground.
     ใน Inspector → Add Tag → สร้าง Tag ชื่อ "Ground".
     กลับมาที่ Ground → Assign Tag "Ground".
+
+"การเพิ่มระบบคะแนน (Score System)"
+1.เพิ่ม Text สำหรับแสดงคะแนน:
+    คลิกขวาที่ Hierarchy → UI → Text → ตั้งชื่อว่า ScoreText.
+    ใน Inspector:
+        - ตั้งค่า Text เริ่มต้นเป็น "Score: 0".
+        - ปรับตำแหน่ง Text ให้อยู่มุมบนซ้ายของหน้าจอ.
+2.สร้าง Script สำหรับ GameManager:
+    คลิกขวาที่ Assets → Create → C# Script → ตั้งชื่อว่า GameManager.
+3.เพิ่ม Script ให้ GameManager:
+    ลาก Script GameManager ไปที่ GameObject Canvas.
+    ใน Inspector ของ GameManager → Assign ScoreText.
+
+"เพิ่ม Script สำหรับ Obstacle:"
+    คลิกขวาที่ Assets → Create → C# Script → ตั้งชื่อว่า Obstacle.
+    ลาก Script ไปที่ GameObject Obstacle.
