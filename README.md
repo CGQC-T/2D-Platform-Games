@@ -9,5 +9,6 @@
   ตั้งค่า Speed และ Jump Force ใน Inspector (เช่น Speed = 5, Jump Force = 10).
 
 4.กำหนด Tag ให้ Ground:
-  เลือก GameObject Ground. ใน Inspector → Add Tag → สร้าง Tag ชื่อ "Ground".
+  เลือก GameObject Ground. 
+  ใน Inspector → Add Tag → สร้าง Tag ชื่อ "Ground".
   กลับมาที่ Ground → Assign Tag "Ground".
